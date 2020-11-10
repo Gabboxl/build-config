@@ -41,9 +41,9 @@ repo init -u https://github.com/lineageos/android.git -b lineage-17.1
 wget https://raw.githubusercontent.com/Gabboxl/local_manifests/master/msm8916_q.xml -P .repo/local_manifests/
 
 echo "Resetting build tree"
-repo forall -vc "git reset --hard" > /tmp/android-reset.log 2>&1
+repo forall -vc "git reset --hard"
 echo "Syncing"
-repo sync -j32 -d --force-sync > /tmp/android-sync.log 2>&1
+repo sync -j32 -d --force-sync
 . build/envsetup.sh
 
 
@@ -51,7 +51,7 @@ echo "--- clobber"
 rm -rf out
 
 echo "--- Building"
-brunch lineage_gprimeltexx-userdebug > /tmp/android-build.log
+brunch lineage_gprimeltexx-userdebug
 
 #echo "--- Uploading"
 #ssh jenkins@blob.lineageos.org mkdir -p /home/jenkins/incoming/${DEVICE}/${BUILD_UUID}/
