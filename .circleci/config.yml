@@ -1,6 +1,8 @@
 version: 2
 jobs:
   shellcheck:
+    machine: # executor type
+      image: ubuntu-2004:202010-01
     steps:
       - checkout
       - run:
