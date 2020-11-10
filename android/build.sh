@@ -30,13 +30,13 @@ echo "--- Syncing"
 curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
 
-cd /lineage/${VERSION}
-rm -rf .repo/local_manifests/*
+mkdir /lineage
+cd /lineage
 
 if [ -f /lineage/setup.sh ]; then
     source /lineage/setup.sh
 fi
-yes | repo init -u https://github.com/lineageos/android.git -b ${VERSION}
+repo init -u https://github.com/lineageos/android.git -b lineage-17.1
 
 wget https://raw.githubusercontent.com/Gabboxl/local_manifests/master/msm8916_q.xml -P .repo/local_manifests/
 
