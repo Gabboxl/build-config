@@ -24,18 +24,15 @@ if [ -z "$TYPE" ]; then
   export TYPE=userdebug
 fi
 
-export BUILD_NUMBER=$( (date +%s%N ; echo $BUILD_UUID; hostname) | openssl sha1 | sed -e 's/.*=//g; s/ //g' | cut -c1-10 )
+#export BUILD_NUMBER=$( (date +%s%N ; echo $BUILD_UUID; hostname) | openssl sha1 | sed -e 's/.*=//g; s/ //g' | cut -c1-10 )
 
 echo "--- Syncing"
 curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
 
-mkdir /lineage
-cd /lineage
+mkdir lineage
+cd lineage/
 
-if [ -f /lineage/setup.sh ]; then
-    source /lineage/setup.sh
-fi
 repo init -u https://github.com/lineageos/android.git -b lineage-17.1
 
 wget https://raw.githubusercontent.com/Gabboxl/local_manifests/master/msm8916_q.xml -P .repo/local_manifests/
