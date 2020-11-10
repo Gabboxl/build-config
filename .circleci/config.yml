@@ -1,0 +1,15 @@
+version: 2
+jobs:
+  shellcheck:
+    steps:
+      - checkout
+      - run:
+          name: Check Scripts
+          command: |
+            sh android/build.sh
+
+workflows:
+  version: 2
+  check-build:
+    jobs:
+      - shellcheck
