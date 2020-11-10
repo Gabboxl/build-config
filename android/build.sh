@@ -27,6 +27,8 @@ fi
 export BUILD_NUMBER=$( (date +%s%N ; echo $BUILD_UUID; hostname) | openssl sha1 | sed -e 's/.*=//g; s/ //g' | cut -c1-10 )
 
 echo "--- Syncing"
+curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+chmod a+x ~/bin/repo
 
 cd /lineage/${VERSION}
 rm -rf .repo/local_manifests/*
